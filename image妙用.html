@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>image妙用</title>
+</head>
+<body>
+    <!-- 1、利用image测网速 
+        原理我认为：就是通过已知一张图片的大小，然后通过加载时间来计算
+        网速：资源大小/资源加载的时间
+    -->
+    <!-- <img crossorigin="anonymous" src="./demo.jpg" alt=""> -->
+    <!-- <img id="demo" src="./demo.jpg" alt=""> -->
+    <!-- crossorigin="anonymous" 任何一个标签都可以用
+    它的具体作用是什么呢？就是表明你想通过跨域方式来获取加了该属性的标签
+    比如你在img标签上加了，就表明你想通过跨域方式来获取这张图片，但是如果服务端不同意，那么这样图片就
+    不能显示，只有服务端在Access-Control-A-O这个字段并且value或者是你网站的域名才能访问，否则会认为
+    无权使用，结果就是无法显示
+    作用：防止信息被泄漏，相当于只有在征求到目标服务器的许可，才能进行一些操作，更安全
+
+    不解：本地访问不同文件夹里的图片加了这个属性后，也会跨域，是为什么呢？
+    已解决：Chrome浏览器好像默认了只要加了这个属性，如果没有验证返回或者没有在响应头加认可字段就认为其无权使用
+           FireFox、IE、Microsoft Edge没问题
+    -->
+    <script>
+        var s = Date.now()//开始的时间
+        var image = new Image();
+        image.src = "https://www.flygoing.cn/images/qq.png"
+        image.onload = function(){
+            var e = Date.now()//结束时间
+            var network = 7 / (e - s) *1000
+            console.log(network)//单位是kb
+        }
+    </script>
+    <!-- 上传数据 -->
+    <!-- 原理：通过一个image带的参数，或获取一些用户的点击习惯，进而进行产品的调整 -->
+</body>
+</html>

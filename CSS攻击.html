@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS攻击</title>
+    <style>
+    #demo{
+        color: expression(alert('XSS'));
+        background: url(./demo.jpg);
+        background: url(./background.js)
+    }
+    </style>
+</head>
+<body>
+    <!-- CSS攻击可以发起的原因是有些属性可以调用外部的地址
+        如果该地址是静态资源就还好，如果是可以运行的，带有攻击意图的程序
+        那么就会有问题，所以应慎用。
+        不过我还没有实现，有没有可能是浏览器进行了一些防止注入的操作？
+    -->
+    <div id="demo">
+        sdfdsf
+    </div>
+    
+</body>
+</html>

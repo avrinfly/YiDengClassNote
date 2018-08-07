@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 原理：应该是iframe的一个叫postMessage的方法发信息给另一个域的文件 -->
+    <!-- 应用呢，就是iframe在另一个域下使用其localstore 进而达到扩容的目的 -->
+    <!-- 还有些懵，需要点时间再消化消化 -->
+    <iframe src="localhost/storage.html" frameborder="0"></iframe>
+    <script>
+        window.frames[0].postMessage('value','666')
+    </script>
+</body>
+</html>
