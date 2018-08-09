@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS3 方体</title>
+    <style>
+        .demo {
+            width: 200px;
+            height: 200px;
+            margin: 230px auto 0 auto;
+            padding: 0;
+        }
+
+        #box {
+            -webkit-transform-style: preserve-3d;
+            -webkit-transform-origin: 80px 20px;
+            transform: perspective(369px);
+            transform-origin: 80px 50px;
+            animation: cartoon ease-in-out 5s infinite;
+        }
+
+        #box div {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            background: rgba(255, 210, 12, .5);
+            border: 3px solid #000;
+            font-size: 110px;
+            text-align: center;
+        }
+
+        .one {
+            transform: translateZ(80px);
+        }
+
+        .two {
+            transform: rotateX(90deg) translateZ(80px);
+        }
+
+        .three {
+            transform: rotateX(-90deg) translateZ(80px);
+        }
+
+        .four {
+            transform: rotateX(90deg) rotateY(90deg) translateZ(80px);
+        }
+
+        .five {
+            transform: rotateX(90deg) rotateY(-90deg) translateZ(80px);
+        }
+
+        .six {
+            transform: rotateX(180deg) translateZ(80px);
+        }
+
+        @keyframes cartoon {
+            16% {
+                transform: rotateY(-135deg);
+            }
+            33% {
+                transform: rotateY(-135deg) rotateX(90deg);
+            }
+            50% {
+                transform: rotateY(45deg) rotateX(90deg);
+            }
+            66% {
+                transform: rotateX(45deg) rotateZ(135deg);
+            }
+            84% {
+                transform: rotateX(135deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo">
+        <div id="box" class="box">
+            <div class="one">1</div>
+            <div class="two">2</div>
+            <div class="three">3</div>
+            <div class="four">4</div>
+            <div class="five">5</div>
+            <div class="six">6</div>
+        </div>
+    </div>
+</body>
+
+</html>
