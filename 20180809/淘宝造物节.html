@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3D造物节</title>
+    <script src="http://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+    <style>
+        body{
+            background: url('./img/bg.jpg')
+        }
+        .content{
+            margin: 0 auto;
+            width: 8.0625rem;
+            perspective:25rem;
+        }
+        #box{
+            transform-style: preserve-3d;
+            height: 100%;
+            perspective-origin: 50% 50%;
+        }
+        #box div{
+            position: absolute;
+            width: 8.0625rem;
+	        height: 73.125rem;
+        }
+        .one{
+            background: url('./img/p1.png') no-repeat;
+            transform: rotateY(18deg) translateZ(404px);
+        }
+        .two{
+            background: url('./img/p2.png') no-repeat;
+            transform: rotateY(36deg) translateZ(404px);
+        }
+        .three{
+            background: url('./img/p3.png') no-repeat;
+            transform: rotateY(54deg) translateZ(404px);
+        }
+        .four{
+            background: url('./img/p4.png') no-repeat;
+            transform: rotateY(72deg) translateZ(404px);
+        }
+        .five{
+            background: url('./img/p5.png') no-repeat;
+            transform: rotateY(90deg) translateZ(404px);
+        }
+        .six{
+            background: url('./img/p6.png') no-repeat;
+            transform: rotateY(108deg) translateZ(404px);
+        }
+        .seven{
+            background: url('./img/p7.png') no-repeat;
+            transform: rotateY(126deg) translateZ(404px);
+        }
+        .eight{
+            background: url('./img/p8.png') no-repeat;
+            transform: rotateY(144deg) translateZ(404px);
+        }
+        .nine{
+            background: url('./img/p9.png') no-repeat;
+            transform: rotateY(162deg) translateZ(404px);
+        }
+        .ten{
+            background: url('./img/p10.png') no-repeat;
+            transform: rotateY(180deg) translateZ(404px);
+        }
+        .eleven{
+            background: url('./img/p11.png') no-repeat;
+            transform: rotateY(198deg) translateZ(404px);
+        }
+        .twelve{
+            background: url('./img/p12.png') no-repeat;
+            transform: rotateY(216deg) translateZ(404px);
+        }
+        .thirteen{
+            background: url('./img/p13.png') no-repeat;
+            transform: rotateY(234deg) translateZ(404px);
+        }
+        .fourteen{
+            background: url('./img/p14.png') no-repeat;
+            transform: rotateY(252deg) translateZ(404px);
+        }
+        .fifteen{
+            background: url('./img/p15.png') no-repeat;
+            transform: rotateY(270deg) translateZ(404px);
+        }
+        .sixteen{
+            background: url('./img/p16.png') no-repeat;
+            transform: rotateY(288deg) translateZ(404px);
+        }
+        .seventeen{
+            background: url('./img/p17.png') no-repeat;
+            transform: rotateY(306deg) translateZ(404px);
+        }
+        .eighteen{
+            background: url('./img/p18.png') no-repeat;
+            transform: rotateY(324deg) translateZ(404px);
+        }
+        .ninteen{
+            background: url('./img/p19.png') no-repeat;
+            transform: rotateY(342deg) translateZ(404px);
+        }
+        .twenty{
+            background: url('./img/p20.png') no-repeat;
+            transform: rotateY(360deg) translateZ(404px);
+        }
+    </style>
+</head>
+<body>
+    <audio id="audio">
+        <source src="./audio/bgm.mp3" type="audio/mpeg">
+    </audio>
+    <div id="suona">⏸</div>
+    <div id="content" class="content">
+        <div id="box">
+            <div class="one">1</div>
+            <div class="two">2</div>
+            <div class="three">3</div>
+            <div class="four">4</div>
+            <div class="five">5</div>
+            <div class="six">6</div>
+            <div class="seven">7</div>
+            <div class="eight">8</div>
+            <div class="nine">9</div>
+            <div class="ten">10</div>
+            <div class="eleven">11</div>
+            <div class="twelve">12</div>
+            <div class="thirteen">13</div>
+            <div class="fourteen">14</div>
+            <div class="fifteen">15</div>
+            <div class="sixteen">16</div>
+            <div class="seventeen">17</div>
+            <div class="eighteen">18</div>
+            <div class="ninteen">19</div>
+            <div class="twenty">20</div>
+        </div>
+    </div>
+    <script class="text/javascript">
+        var content = document.getElementById('element');
+        var box = document.getElementById('box');
+        var audio = document.getElementById('audio');
+        var count = calcCountValue(129,20);
+    
+        function calcCountValue(size,num){
+            return Math.round(size / (2 * Math.tan(Math.PI / num))) - 3
+        }
+        $("#suona").on('tap',function(e){
+            if(audio.paused){
+                audio.play();
+                $(this).text('🎺');
+            }else{
+                audio.pause();
+                $(this).text('⏸')
+            }
+        })
+
+
+        var startSeat = 0,
+            moveSeat = 0,
+            endSeat = 0;
+        var flag = true;
+        $('#box').on('touchstart',function(e){
+            console.log('点下');
+            e.preventDefault();
+            var touch = e.targetTouches[0];
+            startSeat = touch.pageX - moveSeat;
+        })
+        $('#box').on('touchmove',function(e){
+            if(flag){
+                console.log('移动')
+                e.preventDefault()
+                var touch = e.targetTouches[0];
+                endSeat = touch.pageX;
+                moveSeat = endSeat - startSeat;
+                box.style.transform = 'rotateY('+ moveSeat + 'deg)';
+            }else{
+                return false;
+            }
+        })
+    </script>
+</body>
+</html>
