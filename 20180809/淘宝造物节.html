@@ -1,115 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>3D造物节</title>
     <script src="http://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
     <style>
-        body{
+        body {
             background: url('./img/bg.jpg')
         }
-        .content{
+
+        #suona {
+            position: absolute;
+            right: 1em;
+            z-index: 9999;
+        }
+
+        .content {
             margin: 0 auto;
             width: 8.0625rem;
-            perspective:25rem;
+            perspective: 25rem;
         }
-        #box{
+
+        #box {
             transform-style: preserve-3d;
             height: 100%;
             perspective-origin: 50% 50%;
         }
-        #box div{
+
+        #box div {
             position: absolute;
             width: 8.0625rem;
-	        height: 73.125rem;
+            height: 73.125rem;
         }
-        .one{
+
+        .one {
             background: url('./img/p1.png') no-repeat;
             transform: rotateY(18deg) translateZ(404px);
         }
-        .two{
+
+        .two {
             background: url('./img/p2.png') no-repeat;
             transform: rotateY(36deg) translateZ(404px);
         }
-        .three{
+
+        .three {
             background: url('./img/p3.png') no-repeat;
             transform: rotateY(54deg) translateZ(404px);
         }
-        .four{
+
+        .four {
             background: url('./img/p4.png') no-repeat;
             transform: rotateY(72deg) translateZ(404px);
         }
-        .five{
+
+        .five {
             background: url('./img/p5.png') no-repeat;
             transform: rotateY(90deg) translateZ(404px);
         }
-        .six{
+
+        .six {
             background: url('./img/p6.png') no-repeat;
             transform: rotateY(108deg) translateZ(404px);
         }
-        .seven{
+
+        .seven {
             background: url('./img/p7.png') no-repeat;
             transform: rotateY(126deg) translateZ(404px);
         }
-        .eight{
+
+        .eight {
             background: url('./img/p8.png') no-repeat;
             transform: rotateY(144deg) translateZ(404px);
         }
-        .nine{
+
+        .nine {
             background: url('./img/p9.png') no-repeat;
             transform: rotateY(162deg) translateZ(404px);
         }
-        .ten{
+
+        .ten {
             background: url('./img/p10.png') no-repeat;
             transform: rotateY(180deg) translateZ(404px);
         }
-        .eleven{
+
+        .eleven {
             background: url('./img/p11.png') no-repeat;
             transform: rotateY(198deg) translateZ(404px);
         }
-        .twelve{
+
+        .twelve {
             background: url('./img/p12.png') no-repeat;
             transform: rotateY(216deg) translateZ(404px);
         }
-        .thirteen{
+
+        .thirteen {
             background: url('./img/p13.png') no-repeat;
             transform: rotateY(234deg) translateZ(404px);
         }
-        .fourteen{
+
+        .fourteen {
             background: url('./img/p14.png') no-repeat;
             transform: rotateY(252deg) translateZ(404px);
         }
-        .fifteen{
+
+        .fifteen {
             background: url('./img/p15.png') no-repeat;
             transform: rotateY(270deg) translateZ(404px);
         }
-        .sixteen{
+
+        .sixteen {
             background: url('./img/p16.png') no-repeat;
             transform: rotateY(288deg) translateZ(404px);
         }
-        .seventeen{
+
+        .seventeen {
             background: url('./img/p17.png') no-repeat;
             transform: rotateY(306deg) translateZ(404px);
         }
-        .eighteen{
+
+        .eighteen {
             background: url('./img/p18.png') no-repeat;
             transform: rotateY(324deg) translateZ(404px);
         }
-        .ninteen{
+
+        .ninteen {
             background: url('./img/p19.png') no-repeat;
             transform: rotateY(342deg) translateZ(404px);
         }
-        .twenty{
+
+        .twenty {
             background: url('./img/p20.png') no-repeat;
             transform: rotateY(360deg) translateZ(404px);
         }
     </style>
 </head>
+
 <body>
-    <audio id="audio">
-        <source src="./audio/bgm.mp3" type="audio/mpeg">
+    <audio loop id="audio">
+        <source src="./audio/bgm.mp3" type="audio/mpeg">	
     </audio>
     <div id="suona">⏸</div>
     <div id="content" class="content">
@@ -140,44 +171,61 @@
         var content = document.getElementById('element');
         var box = document.getElementById('box');
         var audio = document.getElementById('audio');
-        var count = calcCountValue(129,20);
-    
-        function calcCountValue(size,num){
-            return Math.round(size / (2 * Math.tan(Math.PI / num))) - 3
-        }
-        $("#suona").on('tap',function(e){
-            if(audio.paused){
+        var count = calcCountValue(129, 20);
+
+        function load(e){
+            if (audio.paused) {
                 audio.play();
                 $(this).text('🎺');
-            }else{
+            } else {
                 audio.pause();
                 $(this).text('⏸')
             }
-        })
+        }
 
+        function calcCountValue(size, num) {
+            return Math.round(size / (2 * Math.tan(Math.PI / num))) - 3
+        }
+
+        $("#suona").on('tap',load)
 
         var startSeat = 0,
             moveSeat = 0,
             endSeat = 0;
         var flag = true;
-        $('#box').on('touchstart',function(e){
-            console.log('点下');
+        $('#box').on('touchstart', function (e) {
+            // console.log('点下');
+            audio.play()
             e.preventDefault();
             var touch = e.targetTouches[0];
             startSeat = touch.pageX - moveSeat;
         })
-        $('#box').on('touchmove',function(e){
-            if(flag){
-                console.log('移动')
+        $('#box').on('touchmove', function (e) {
+            if (flag) {
+                // console.log('移动')
                 e.preventDefault()
                 var touch = e.targetTouches[0];
                 endSeat = touch.pageX;
                 moveSeat = endSeat - startSeat;
-                box.style.transform = 'rotateY('+ moveSeat + 'deg)';
-            }else{
+                box.style.transform = 'rotateY(' + moveSeat + 'deg)';
+            } else {
                 return false;
+            }
+        })
+        $('#box').on('touchend', function (e) {
+            // console.log('松开')
+        })
+        window.addEventListener('deviceorientation', function (event) {
+            // console.log('deviceorientation事件')
+            var gamma = event.gamma;
+            if (Math.abs(gamma) > 1) {
+                flag = false;
+                box.style.transform = 'rotateY(' + gamma * 3 + 'deg)';
+            } else {
+                flag = true;
             }
         })
     </script>
 </body>
+
 </html>
