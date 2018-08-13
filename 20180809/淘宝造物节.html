@@ -176,16 +176,25 @@
         function load(e){
             if (audio.paused) {
                 audio.play();
-                $(this).text('🎺');
+                $('#suona').text('🎺');
             } else {
                 audio.pause();
-                $(this).text('⏸')
+                $('#suona').text('⏸')
             }
         }
 
         function calcCountValue(size, num) {
             return Math.round(size / (2 * Math.tan(Math.PI / num))) - 3
         }
+        
+        $(document).one('touchstart',function(){
+            if (audio.paused) {
+                audio.play();
+                $('#suona').text('🎺');
+            } else {
+                return false
+            }
+        })
 
         $("#suona").on('tap',load)
 
@@ -195,7 +204,6 @@
         var flag = true;
         $('#box').on('touchstart', function (e) {
             // console.log('点下');
-            audio.play()
             e.preventDefault();
             var touch = e.targetTouches[0];
             startSeat = touch.pageX - moveSeat;
