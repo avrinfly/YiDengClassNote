@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>渐变-伞</title>
+    <style>
+        #umbrella {
+            width: 300px;
+            padding: 50px;
+        }
+
+        .little-circle {
+            width: 20px;
+            height: 20px;
+            background: #000;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+
+        .clearfix {
+            clear: both;
+            content: '';
+            overflow: hidden;
+        }
+
+        .umbrella-main {
+            width: 200px;
+            margin: 0 auto;
+        }
+
+        .left {
+            float: left;
+            width: 100px;
+            height: 50px;
+            background: red;
+            border-radius: 100% 0 0;
+            background: -webkit-linear-gradient(left, red, blue);
+            /* Safari 5.1 - 6.0 */
+            background: -o-linear-gradient(right, red, blue);
+            /* Opera 11.1 - 12.0 */
+            background: -moz-linear-gradient(right, red, blue);
+            /* Firefox 3.6 - 15 */
+            background: linear-gradient(to right, red, blue);
+            /* 标准的语法 */
+        }
+
+        .right {
+            float: right;
+            width: 100px;
+            height: 50px;
+            background: red;
+            border-radius: 0 100% 0 0;
+            background: -webkit-linear-gradient(left, blue,red);
+            /* Safari 5.1 - 6.0 */
+            background: -o-linear-gradient(right,  blue,red);
+            /* Opera 11.1 - 12.0 */
+            background: -moz-linear-gradient(right, blue, red);
+            /* Firefox 3.6 - 15 */
+            background: linear-gradient(to right, blue,red);
+            /* 标准的语法 */
+        }
+
+        .umbrella-pole {
+            width: 15px;
+            height: 100px;
+            background: green;
+            margin: 0 auto;
+        }
+
+        .umbrella-handle {
+            width: 20px;
+            height: 30px;
+            background: orange;
+            margin: 0 auto;
+            border-radius: 0 75% 0;
+            /* transform: translate3d(5deg 5deg 5deg); */
+            transform: translateX(3px) translateY(-6px) translateZ(10px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="umbrella">
+        <div class="little-circle"></div>
+        <div class="umbrella-main clearfix">
+            <div class="left"></div>
+            <div class="right"></div>
+        </div>
+        <div class="umbrella-pole"></div>
+        <div class="umbrella-handle"></div>
+    </div>
+</body>
+
+</html>
