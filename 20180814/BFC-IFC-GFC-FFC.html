@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BFC-IFC-GFC-FFC</title>
+</head>
+
+<body>
+    <!-- box：每个box都是一个容器，不同的容器会参与不同的Formatting Context(一个决定如何渲染的容器) -->
+    <!-- Formatting context 是 W3C CSS2.1 规范中的一个概念。它是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。 -->
+    <!-- BFC -->
+    <!-- 个人理解：BFC
+        比较重点是：FC--指的是formatting context -- 指文档如何去渲染  B-- block 块级的意思
+        简而言之：BFC就是块级元素如何渲染。其就是一个页面上独立的渲染容器。
+        能生成BFC的元素：
+        
+        根元素
+        float属性不为none
+        position为absolute或fixed
+        display为inline-block, table-cell, table-caption, flex, inline-flex
+        overflow不为visible
+        ps：其实我们在写以上属性时，为什么可以满足我们的要求，其实就是其生成了一个BFC
+        
+        IFC(Inline Formatting Contexts)
+        直译为"内联格式化上下文"，
+        IFC的line box（线框）高度由其包含行内元素中最高的实际高度计算而来（不受到竖直方向的padding/margin影响)
+
+        FFC(Flex Formatting Contexts)
+        直译为"自适应格式化上下文"，
+        display值为flex或者inline-flex的元素将会生成自适应容器（flex container），
+
+        GFC(GridLayout Formatting Contexts)
+        直译为"网格布局格式化上下文"，
+        当为一个元素设置display值为grid的时候，此元素将会获得一个独立的渲染区域，
+        我们可以通过在网格容器（grid container）上定义网格定义行（grid definition rows）和网格定义列（grid definition columns）属性
+        各在网格项目（grid item）上定义网格行（grid row）和网格列（grid columns）为每一个网格项目（grid item）定义位置和空间。
+    -->
+</body>
+
+</html>

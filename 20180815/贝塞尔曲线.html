@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>贝塞尔曲线</title>
+    <style>
+        #demo{
+            transition: cubic-bezier(.17, .86, .73, .14);
+        }
+    </style>
+</head>
+<body>
+    <!-- 贝塞尔曲线官网  http://cubic-bezier.com/ -->
+    <!-- 就类似于animate.css一样，有一个强大的支撑     -->
+    贝塞尔曲线组成部分：四个数字，
+    不过一般来说(有几个固定的值和曲线)：
+    ease：cubic-bezier(.25, .1, .25, 1)
+    liner：cubic-bezier(0, 0, 1, 1) / cubic-bezier(1, 1, 0, 0)
+    ease-in：cubic-bezier(.42, 0, 1, 1)
+    ease-out：cubic-bezier(0, 0, .58, 1)
+    ease-in-out：cubic-bezier(.42, 0, .58, 1)
+    In Out . Back（来回的缓冲效果）：cubic-bezier(0.68, -0.55, 0.27, 1.55)
+</body>
+</html>
