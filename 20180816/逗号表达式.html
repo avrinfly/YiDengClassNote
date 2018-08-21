@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>逗号表达式</title>
+</head>
+<body>
+    <script>
+        // 其实逗号表达式不能算是新语法了，不过对于代码的优化来说是必不可少的
+
+        // 1.先看一下小例子:
+        var a = (true,false);
+        console.log(a);//false
+
+        这就是一个简单的逗号表达式,
+        逗号表达式的形式是：表达式1、表达式2、... 表达式n
+        求解过程是：先计算表达式1的值，再计算表达式2的值，....最后再计算表达式n的值，并将n的值return返回
+        要注意的是：不管有多少表达式，最后只将最后一个表达式返回
+        
+        //有人会问了，那计算前面的值有什么用呢？反正又不返回
+        再看下面这个例子
+
+        var a = (a = 1,b = 2,c = a+b)
+        console.log(a)//3
+        这就是计算前面值的用处所在，最后return的值有可能需要前面的值进行操作或者判断
+
+        那这么写有什么意义吗？
+        //我的认为是将代码更加的齐整，就像很多老手不喜欢写ifelse一样，总要有一些比较“高端”的写法嘛：
+        
+        if(x){
+            foo()
+            return boo()
+        }else{
+            return coo()
+        }
+        //这个是一般的一个判断写法
+        
+        上面可写成：
+        return x ? (foo(),boo()):coo()
+        是不是瞬间就感觉高大上了呢？
+    </script>
+</body>
+</html>
