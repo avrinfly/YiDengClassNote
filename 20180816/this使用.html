@@ -64,7 +64,8 @@
     }
     fly.init()//此时this.a = 20
     //箭头函数会找到其父级作用域的this，通俗来说：就是他爹是谁，this就指向谁   
-    
+    //fly.init(),调用init()的是fly，而fly的父亲时候window，所以，a = 20
+
     
     //拿今天的每日一题来说：
     var  length = 10;
@@ -84,6 +85,27 @@
     arguments[0]就是指函数fn
     // 一般情况是这样的，但是也有特殊情况
     // 第一个打印出10的原因：谁调用，最后是fn函数调用了this，而fn函数的this指向window，所以最后的this.length = 10
+
+
+    // new 函数下的this指向
+    function test(){
+        this.a = 20
+    }
+    test.prototype.a = 30;
+    console.log(new test().a) // 20
+    //在new 函数时，this指向是函数的优先级高于原型链
+    //为什么？原因：
+    es6的
+    class test{
+        a(){
+            console.log(1);
+        }
+    }
+    test.prototype.a = function(){
+        console.log(2)
+    }
+    (new test).a() //2  
+    //为什么是2，因为class这个类，是基于原型链实现的，所以下面修改了原型链的内容，所以a会变
     </script>
 </body>
 </html>
