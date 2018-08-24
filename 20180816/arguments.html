@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // arguments 是对应于传递给函数的参数的类数组对象
+
+        // arguments对象是所有（ 非箭头） 函数中都可用的局部变量。
+        // 你可以使用arguments对象在函数中引用函数的参数。
+        // 此对象包含传递给函数的每个参数， 第一个参数在索引0处。
+        // 例如， 如果一个函数传递了三个参数， 你可以以如下方式引用他们：
+        arguments[0]-- > 第一个参数
+        arguments[1]-- > 第二个参数
+        arguments[2]-- > 第三个参数
+
+        参数也可以被设置
+        argumentsp[0] = "hello world";
+
+        //arguments对象不是一个Array。它类似于Array，但除了length属性和索引元素之外没有任何Array属性。
+        //例如，它没有 pop 方法。但是它可以被转换为一个真正的Array：
+
+        var args = Array.prototype.slice.call(arguments);
+        var args = [].slice.call(arguments);
+
+        // ES2015
+        const args = Array.from(arguments);
+
+        Array.prototype.slice.call(arguments) 目的是将一个类数组（ 伪数组 Array - like） 对象 / 集合转换成一个新的数组。
+        你只需将该方法绑定到这个对象上。 一个函数中的arguments就是一个类数组对象的例子。
+
+        function list() {
+            return Array.prototype.slice.call(arguments);
+        }
+        var list1 = list(1, 2, 3); // [1, 2, 3]
+
+        *** 使用参数slice会阻止一些JavaScript引擎中的优化（比如V8引擎）。如果比较注重性能，可尝试通过遍历arguments对象来构造一个新的数组。
+        另一种方法是使用被忽视的Array构造函数作为一个函数：
+
+        var args = (arguments.length === 1 ? [arguments[0]] : Array.apply(null, arguments));
+
+        如果调用的参数多于正式声明接受的参数，则可以使用arguments对象。
+        这种技术对于可以传递可变数量的参数的函数很有用。
+        使用 arguments.length来确定传递给函数参数的个数，然后使用arguments对象来处理每个参数。
+        要确定函数签名中（输入）参数的数量，请使用Function.length属性。
+    </script>
+</body>
+
+</html>

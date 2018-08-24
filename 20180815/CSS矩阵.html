@@ -25,13 +25,15 @@
     <!-- 
 
      -->
+     <textarea maxlength='10' name="" id="aaa"></textarea>
      <script>
-         for(let i = (setTimeout(() => console.log('a->',i)), 0); 
-            setTimeout(() =>console.log('b->',i)) , i<2; i++
-         ){
-            i++ 
-         }
-     
+        //  for(let i = (setTimeout(() => console.log('a->',i)), 0); 
+        //     setTimeout(() =>console.log('b->',i)) , i<2; i++
+        //  ){
+        //     i++ 
+        //  }
+        document.getElementById("aaa").value = 'a'.repeat(10) + 'b'
+        console.log(document.getElementById("aaa").maxlength)
      </script>
 </body>
 </html>
