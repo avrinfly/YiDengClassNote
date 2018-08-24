@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function test(m){
+            m = {
+                v:5
+            }
+        }
+        var m ={
+            k:30
+        }
+        test(m)
+        alert(m.v)//undefined
+        
+        function test(q){
+            q.v = 5
+        }
+        var m ={
+            k:30
+        }
+        test(m)
+        alert(m.v)//5
+        
+        //函数的值按值传递，但是传递值的指向是按引用传递的
+        q和m是按值传递，但是q和m指向的引用的值按引用传递
+        
+        
+        按值传递和按引用传递
+
+        按值传递：简单类型是按值传递
+        var a = 1;
+        b = a;
+        b = 2;
+        alert(b,a)//2 1
+
+        //按引用传递
+        var a = {}
+         b = a
+         b.qq = 20
+         alert(a.qq)//20
+    </script>
+</body>
+</html>
