@@ -10,6 +10,15 @@
     <script>
         //总结起来就一句话：拿到你不该拿到的变量
 
+        //最常见的闭包形式：
+        function test(){
+            // code
+            return function(){
+                //code
+            }
+        }
+        //应该注意的是：setTimeout等也会形成闭包
+        
         //没有被占用的话，就会被回收
         function test(){
             var a = 1;
