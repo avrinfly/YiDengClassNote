@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas小实战</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #backgr{
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 400px;
+            height: 400px;
+            margin-left: -200px;
+            background: url('https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3127216130,1785603632&fm=27&gp=0.jpg');
+            opacity: .3;
+        }
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <div id="backgr"></div>
+    <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        ctx.translate(200,200);
+
+        var rain = [];
+        var flag = 0;
+        function cellArc(){};
+        cellArc.prototype = {
+            init:function(){
+                this.x = 0;
+                this.y = 0;
+                this.r = 20;
+                this.vr = 0.7;
+                this.colos = Math.floor(Math.random()*1000);
+            },
+            draw:function(){
+                ctx.beginPath();
+                ctx.strokeStyle = '#' + this.colos;
+                ctx.arc(this.x,this.y,this.r,0,Math.PI *2);
+                ctx.stroke();
+            },
+            move:function(){
+                if(this.r<100){
+                    this.r += this.vr;
+                }else{
+                    this.init();
+                }
+                this.draw();
+            }
+        }
+        function createCell(num){
+            for (var i = 0; i < num; i++) {
+                setTimeout(function() {
+                    var cells = new cellArc();
+                    cells.init();
+                    cells.draw();
+                    rain.push(cells);
+                }, 800 * i);
+                
+            }
+        }
+        function getDraw(){
+            ctx.fillStyle = "rgba(0,0,0,.1)";
+            ctx.fillRect(-200,200,400,400);
+            for(var item of rain){
+                item.move();
+            }
+        }
+        createCell(3);
+        setInterval(function(){
+            ctx.fillStyle = "rgba(0,0,0,.1)";
+            ctx.fillRect(-200,-200,400,400);
+            for(var item of rain){
+                item.move();
+            }
+        },1000/50);
+    </script>
+</body>
+</html>
