@@ -54,6 +54,7 @@
         typeof arguments // “Object”
         console.log(typeof arguments); // 'object'
         // arguments 对象只能在函数内使用
+        
         function test(a) {
             console.log(a, Object.prototype.toString.call(arguments));
             console.log(arguments[0], arguments[1]);
